@@ -1,4 +1,5 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0'
+import { AppLayout } from '../components/AppLayout'
 
 export default function TokenTopup() {
   return (
@@ -6,6 +7,10 @@ export default function TokenTopup() {
       <h1>this is the tokentopup page</h1>
     </div>
   )
+}
+
+TokenTopup.getLayout = function getLayout(page, pageProps) {
+  return <AppLayout {...pageProps}>{page}</AppLayout>
 }
 
 export const getServerSideProps = withPageAuthRequired(() => {
